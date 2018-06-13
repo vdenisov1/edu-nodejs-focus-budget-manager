@@ -17,6 +17,13 @@
     "url": "https://github.com/vdenisov1/focus-budget-manager/issues"
   },
   "homepage": "https://github.com/vdenisov1/focus-budget-manager#readme",
+  "_moduleAliases": {
+    "@root": ".",
+    "@BudgetManager": "./services/BudgetManagerAPI",
+    "@BudgetManagerModels": "./services/BudgetManagerAPI/app/models",
+    "@BudgetManagerAPI": "./services/BudgetManagerAPI/config",
+    "@config": "./services/BudgetManagerAPI/config/index.js"
+  },
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
@@ -29,8 +36,5 @@
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0"
-  },
-  "_moduleAliases": {
-    "@BudgetManagerAPI": "./services/BudgetManagerAPI/config"
   }
 }
