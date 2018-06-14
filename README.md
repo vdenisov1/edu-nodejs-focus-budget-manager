@@ -17,11 +17,11 @@ Tutorial as part of a series by [Gustavo Domardzki](https://codeburst.io/@gdomar
 
 # Progress
 
-Left off just at the CORS setup section of [Part I](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-i-f3d7311822a8)
+Finished Part I, Start of [Part II](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-ii-f08c410c944d)
 
 # Series
 
-- [ ] [Part I](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-i-f3d7311822a8)
+- [x] [Part I](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-i-f3d7311822a8)
 - [ ] [Part II](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-ii-f08c410c944d)
 - [ ] [Part III](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iii-540a77a7ddee)
 - [ ] [Part IV](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iv-e87cac68e04b)
