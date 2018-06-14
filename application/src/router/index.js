@@ -1,15 +1,41 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Vue from "vue";
+import Router from "vue-router";
+import * as Auth from "@/components/pages/Authentication";
 
-Vue.use(Router)
+// Pages
+import Home from "@/components/pages/Home";
+import Authentication from "@/components/pages/Authentication/Authentication";
 
-export default new Router({
+Vue.use(Router);
+
+const router = new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: "/login",
+      name: "Authentication",
+      component: Authentication
+    },
+    {
+      path: "/",
+      name: "Home",
+      component: Home,
+      meta: {
+        requiredAuth: true
+      }
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiredAuth) {
+    if (Auth.default.user.authenticated) {
+      next();
+    } else {
+      router.push("/login");
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;
