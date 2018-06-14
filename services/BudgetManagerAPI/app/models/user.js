@@ -36,7 +36,7 @@ Schema.pre('save', function(next){
 });
 
 Schema.methods.comparePassword = function (password, callback) {
-    bcyrpt.compare(password, this.password, (error, matches) => {
+    bcrypt.compare(password, this.password, (error, matches) => {
         if (error) return callback(error);
         callback(null, matches);
     });
