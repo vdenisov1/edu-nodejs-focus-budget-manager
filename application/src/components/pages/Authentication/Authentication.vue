@@ -74,7 +74,7 @@
                                     </v-text-field>
                                     <v-btn
                                         color="light-blue lighten-1"
-                                        @click-native="submitSignUp()"
+                                        @click.native="submitSignUp()"
                                     >
                                         Sign Up
                                     </v-btn>

@@ -1,13 +1,12 @@
-const models = require('@BudgetManager/app/setup');
+const models = require("@BudgetManager/app/setup");
 
-module.exports = (app) => {
-    const api = app.BudgetManagerAPI.app.api.auth;
+module.exports = app => {
+  const api = app.BudgetManagerAPI.app.api.auth;
 
-    app.route('/')
-        .get((req, res) => {
-            return res.send('Budget Manager API')
-        });
+  // app.route('/')
+  //     .get((req, res) => {
+  //         return res.send('Budget Manager API')
+  //     });
 
-    app.route('/api/v1/auth')
-        .post(api.login(models.User));
-}
+  app.route("/api/v1/auth").post(api.login(models.User));
+};

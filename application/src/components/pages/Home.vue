@@ -16,15 +16,13 @@
                     <v-flex xs10 md6 lg4 offset-xs1 offset-md3 offset-lg4>
                       <h3>Users</h3>
                       <v-list>
-                        <v-list-title v-for="(user, index) in users" 
-                          :key="user.username"
-                        >
-                          <v-list-tile-content class="pa-3">
-                            <v-list-tile-title v-text="user.username"></v-list-tile-title>
-                          </v-list-tile-content>
-                          <v-list-action></v-list-action>
-                          <v-divider v-if="index + 1 < users.length" :key="index"></v-divider>
-                        </v-list-title>
+                        <template v-for="(item) in users">
+                          <v-list-tile :key="item.username">
+                            <v-list-tile-content>
+                              <v-list-tile-title v-html="item.username"></v-list-tile-title>
+                            </v-list-tile-content>
+                          </v-list-tile> 
+                        </template>
                       </v-list>
                     </v-flex>
                 </v-layout>
@@ -55,6 +53,9 @@ export default {
           Authorization: Authentication.getAuthenticationHeader(this)
         }
       }).then(({ data }) => (this.users = data));
+    },
+    logout() {
+      Authentication.logoutUser(this, "/login");
     }
   }
 };

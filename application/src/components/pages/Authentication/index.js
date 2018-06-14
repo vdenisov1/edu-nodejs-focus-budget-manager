@@ -27,12 +27,14 @@ export default {
         context.$cookie.set("token", token, "1D");
         context.validSignUp = true;
         this.user.authenticated = true;
+        console.log("User authenticated");
 
         if (redirect) router.push(redirect);
       })
       .catch(({ response: { data } }) => {
         context.snackbar = true;
         context.message = data.message;
+        console.log("User not authenticated");
       });
   },
 
@@ -45,5 +47,11 @@ export default {
 
   getAuthenticationHeader(context) {
     return `Bearer ${context.$cookie.get("token")}`;
+  },
+
+  logoutUser(context, redirect) {
+    console.log("loging out user and redirecting to " + redirect);
+    context.$cookie.delete("token");
+    if (redirect) router.push(redirect);
   }
 };
