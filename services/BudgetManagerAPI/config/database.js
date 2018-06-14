@@ -3,8 +3,9 @@ module.exports = (mongoose, config) => {
     mongoose.Promise = Promise;
 
     mongoose.connect(config.database, {
-        useMongoClient: true,
-        promiseLibrary: global.Promise
+        promiseLibrary: global.Promise,
+        user: process.env.MONGO_DB_USER,
+        pass: process.env.MONGO_DB_AUTH
     });
 
     database.on('error', (error) => {

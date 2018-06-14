@@ -31,3 +31,15 @@ app.set('budgetsecret', config.secret);
 //         Content-Type, Accept");
 //         next();
 //  });
+
+/**
+ * We make sure that the files are loaded in the order according to below
+ *  because they are dependent on one another.
+ */
+consign({ cwd: 'services' })
+    .include('BudgetManagerAPI/app/setup')
+    .then('BudgetManagerAPI/app/api')
+    .then('BudgetManagerAPI/app/routes')
+    .into(app);
+
+module.exports = app;
