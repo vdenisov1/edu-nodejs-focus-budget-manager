@@ -1,61 +1,53 @@
 <template>
     <v-app>
-        <v-toolbar dark fixed app>
-            <v-toolbar-title>Budgeter</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn flat
-                    @click.native="logout()">
-                Logout
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
-        <v-content>
-            <v-container fluid fill-height>
-                <v-layout>
-                    <v-flex xs10 md6 lg4 offset-xs1 offset-md3 offset-lg4>
-                      <h3>Users</h3>
-                      <v-list>
-                        <template v-for="(item) in users">
-                          <v-list-tile :key="item.username">
-                            <v-list-tile-content>
-                              <v-list-tile-title v-html="item.username"></v-list-tile-title>
-                            </v-list-tile-content>
-                          </v-list-tile> 
-                        </template>
-                      </v-list>
-                    </v-flex>
-                </v-layout>
-            </v-container>
-        </v-content>
+      <app-header></app-header>
+  
+      <v-content>
+        <v-container>
+          <budget-list>
+            <budget-list-header slot="budget-list-header"></budget-list-header>
+            <budget-list-body slot="budget-list-body" :budgets="budgets"></budget-list-body>
+          </budget-list>
+        </v-container>
+      </v-content>
     </v-app>
 </template>
 
 <script>
 import Axios from "axios";
 import Authentication from "@/components/pages/Authentication";
+import BudgetListHeader from "./../Budget/BudgetListHeader";
+import BudgetListBody from "./../Budget/BudgetListBody";
 
 const BudgetManagerAPI = `http://${window.location.hostname}:3000`;
 
 export default {
+  components: {
+    "budget-list-header": BudgetListHeader,
+    "budget-list-body": BudgetListBody
+  },
   data() {
     return {
-      users: []
+      budgets: [
+        {
+          client: "Michael Scott",
+          title: "Dunder Mifflin's Paper Batch",
+          status: "PENDING"
+        }
+      ]
     };
   },
   mounted() {
-    this.getAllUsers();
+    this.getAllBudgets();
   },
   methods: {
-    getAllUsers(context) {
-      Axios.get(`${BudgetManagerAPI}/api/v1/users`, {
+    getAllBudgets() {
+      Axios.get(`${BudgetManagerAPI}/api/v1/budget`, {
         headers: {
           Authorization: Authentication.getAuthenticationHeader(this)
-        }
-      }).then(({ data }) => (this.users = data));
-    },
-    logout() {
-      Authentication.logoutUser(this, "/login");
+        },
+        params: { user_id: this.$cookie.get("user_id") }
+      }).then(({ data }) => (this.budgets = data));
     }
   }
 };
