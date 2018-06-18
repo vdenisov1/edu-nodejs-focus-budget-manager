@@ -1,13 +1,10 @@
 <template>
-  <v-header>
+  <div>
     <v-toolbar dark fixed>
         <v-toolbar-title>Budgeter</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn flat>
-            Clients
-          </v-btn>
-          <v-btn flat @click.native="logout()">
+          <v-btn flat @click.native="submitSignout()">
             Logout
           </v-btn>
         </v-toolbar-items>
@@ -35,7 +32,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </v-header>
+  </div>
 </template>
 
 <script>

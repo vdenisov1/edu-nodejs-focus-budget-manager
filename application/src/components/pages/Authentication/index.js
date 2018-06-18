@@ -13,7 +13,6 @@ export default {
         context.$cookie.set("user_id", data.user._id, "1D");
         context.validLogin = true;
         this.user.authenticated = true;
-
         if (redirect) router.push(redirect);
       })
       .catch(({ response: { data } }) => {

@@ -28,13 +28,7 @@ export default {
   },
   data() {
     return {
-      budgets: [
-        {
-          client: "Michael Scott",
-          title: "Dunder Mifflin's Paper Batch",
-          status: "PENDING"
-        }
-      ]
+      budgets: []
     };
   },
   mounted() {
@@ -42,6 +36,7 @@ export default {
   },
   methods: {
     getAllBudgets() {
+      console.log("Cookie ID: " + this.$cookie.get("user_id"));
       Axios.get(`${BudgetManagerAPI}/api/v1/budget`, {
         headers: {
           Authorization: Authentication.getAuthenticationHeader(this)

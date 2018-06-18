@@ -3,7 +3,7 @@
     <div class="md-budget" v-if="budgets != null" v-for="budget in budgets" :key="budget._id">
       <div class="md-budget-info black--text">{{ budget.client }}</div>
       <div class="md-budget-info black--text">{{ budget.title }}</div>
-      <div class="md-budget-info black--text">{{ budget.status }}</div>
+      <div class="md-budget-info black--text">{{ budget.state }}</div>
       <div class="l-budget-actions">
         <v-btn small flat color="blue">
           <v-icon small>visibility</v-icon>
