@@ -18,12 +18,12 @@ Tutorial as part of a series by [Gustavo Domardzki](https://codeburst.io/@gdomar
 
 # Progress
 
-[Part III](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iii-540a77a7ddee) Section: Going back to our RESTful API
+[Part V](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-v-ae7ddb7d8426)
 
 # Series
 
 - [x] [Part I](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-i-f3d7311822a8)
 - [x] [Part II](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-ii-f08c410c944d)
-- [ ] [Part III](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iii-540a77a7ddee)
-- [ ] [Part IV](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iv-e87cac68e04b)
+- [x] [Part III](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iii-540a77a7ddee)
+- [x] [Part IV](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-iv-e87cac68e04b)
 - [ ] [Part V](https://codeburst.io/building-a-budget-manager-with-vue-js-and-node-js-part-v-ae7ddb7d8426)

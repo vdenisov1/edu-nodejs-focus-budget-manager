@@ -1,10 +1,18 @@
 <template>
-  <section class="l-budget-body">
-    <div class="md-budget" v-if="budgets != null" v-for="budget in budgets" :key="budget._id">
-      <div class="md-budget-info black--text">{{ budget.client }}</div>
-      <div class="md-budget-info black--text">{{ budget.title }}</div>
-      <div class="md-budget-info black--text">{{ budget.state }}</div>
-      <div class="l-budget-actions">
+  <section class="l-list-body">
+    <div class="md-list-item"
+          v-if="data != null"
+          v-for="item in data"
+          :key="item._id">
+
+      <div :class="budgetsVisible ? 'md-budget-info black--text' : 'md-client-info black--text'"
+          v-for="info in item" 
+          v-if="info != item._id" 
+          :key="info">
+          {{ info }}
+      </div>
+
+      <div :class="budgetsVisible ? 'l-budget-actions black--text' : 'l-client-actions black--text'">
         <v-btn small flat color="blue">
           <v-icon small>visibility</v-icon>
         </v-btn>
@@ -21,16 +29,16 @@
 
 <script>
 export default {
-  props: ["budgets"]
+  props: ["data", "budgetsVisible"]
 };
 </script>
 
 <style lang="scss">
-.l-budget-body {
+.l-list-body {
   display: flex;
   flex-direction: column;
 
-  .md-budget {
+  .md-list-item {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -41,7 +49,8 @@ export default {
       margin: 0;
     }
 
-    .md-budget-info {
+    .md-budget-info,
+    .md-client-info {
       flex-basis: 25%;
       width: 100%;
       background-color: white;
@@ -76,7 +85,8 @@ export default {
       }
     }
 
-    .l-budget-actions {
+    .l-budget-actions,
+    .l-client-actions {
       flex-basis: 25%;
       display: flex;
       align-items: center;

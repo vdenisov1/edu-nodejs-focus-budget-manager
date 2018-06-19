@@ -10,21 +10,25 @@
         </v-toolbar-items>
     </v-toolbar>
     <v-container>
-      <v-layout row wrap style="margin-top: 75px">
+      <v-layout row wrap style="margin-top: 75px" 
+              :class="budgetsVisible ? 'l-budgets-header' : 'l-clients-header'">
         <v-flex xs12 md5>
           <v-text-field v-model="search"
                 label="Search"
                 append-icon="search"
-                color="light-blue-lighten-1"
+                :color="budgetsVisible ? 'light-blue-lighten-1' : 'green lighten-1'"
               >
           </v-text-field>
         </v-flex>
         <v-flex xs12 offset-md1 md1>
-          <v-btn block color="light-blue lighten-1">Clients</v-btn>
+          <v-btn block 
+                :color="budgetsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
+                @click.native="$emit('toggleVisibleData')"
+          >{{ budgetsVisible ? "Clients" : "Budgets" }}</v-btn>
         </v-flex>
         <v-flex xs12 offset-md1 md4>
           <v-select label="Status"
-                    color="light-blue lighten-1"
+                    :color="budgetsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
                     v-model="status"
                     :items="statusItems"
                     single-line>
@@ -39,6 +43,7 @@
 import Authentication from "@/components/pages/Authentication";
 
 export default {
+  props: ["budgetsVisible"],
   data() {
     return {
       search: "",
@@ -60,4 +65,3 @@ export default {
   }
 };
 </script>
-
