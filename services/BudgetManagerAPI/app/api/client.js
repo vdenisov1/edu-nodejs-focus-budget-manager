@@ -4,6 +4,7 @@ const api = {};
 
 api.store = (User, Client, Token) => (req, res) => {
   if (Token) {
+    console.log(JSON.stringify(req.body));
     const client = new Client({
       user_id: req.body.user_id,
       name: req.body.name,
@@ -85,7 +86,7 @@ api.edit = (User, Client, Token) => (req, res) => {
 
         if (user) {
           Client.findOneAndUpdate(
-            { _id: req.body._Id },
+            { _id: req.body._id },
             req.body,
             (error, client) => {
               if (error) res.status(400).json(error);

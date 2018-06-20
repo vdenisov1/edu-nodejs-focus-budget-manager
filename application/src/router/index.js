@@ -9,9 +9,11 @@ import Authentication from "@/components/pages/Authentication/Authentication";
 // Global Components
 import Header from "@/components/Header";
 import List from "@/components/List/List";
+import Create from "@/components/pages/Create";
 
 Vue.component("app-header", Header);
 Vue.component("list", List);
+Vue.component("create", Create);
 
 Vue.use(Router);
 
@@ -28,7 +30,8 @@ const router = new Router({
       components: {
         default: Home,
         header: Header,
-        list: List
+        list: List,
+        create: Create
       },
       meta: {
         requiredAuth: true

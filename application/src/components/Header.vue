@@ -31,7 +31,8 @@
                     :color="budgetsVisible ? 'light-blue lighten-1' : 'green lighten-1'"
                     v-model="status"
                     :items="statusItems"
-                    single-line>
+                    single-line
+                    @change="selectState">
           </v-select>
         </v-flex>
       </v-layout>
@@ -43,24 +44,32 @@
 import Authentication from "@/components/pages/Authentication";
 
 export default {
-  props: ["budgetsVisible"],
+  props: ["budgetsVisible", "selectState", "search"],
   data() {
     return {
-      search: "",
+      searchValue: "",
       status: "",
       statusItems: [
-        "All",
-        "Approved",
-        "Denied",
-        "Waiting",
-        "Writing",
-        "Editing"
+        "all",
+        "approved",
+        "denied",
+        "waiting",
+        "writing",
+        "editing"
       ]
     };
   },
+  watch: {
+    searchValue: function() {
+      this.$emit("input", this.searchValue);
+    }
+  },
+  created() {
+    this.searchValue = this.search;
+  },
   methods: {
     submitSignout() {
-      Authentication.logoutUser(this, "/login");
+      Authentication.signout(this, "/login");
     }
   }
 };
