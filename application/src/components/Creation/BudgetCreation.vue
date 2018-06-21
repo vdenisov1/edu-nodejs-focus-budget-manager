@@ -5,7 +5,7 @@
         <v-select label="Status" :items="states" v-model="budget.state"></v-select>
       </v-flex>
       <v-flex xs12 md9 offset-md1>
-        <v-select label="Client" :items="clients" v-model="budget.client" item-text="name" item-value="_id"></v-select>
+        <v-select label="Client" :items="clients" v-model="budget.client_id" item-text="name" item-value="_id"></v-select>
       </v-flex>
       <v-flex xs12 md12>
         <v-text-field label="Title" v-model="budget.title" required color="light-blue lighten-1"></v-text-field>    
@@ -18,16 +18,14 @@
 
         <v-flex xs12 md3 offset-md1>
           <v-text-field label="Title"
-                        dark
                         v-model="item.title"
                         required
-                        color="blue ">
+                        color="blue">
           </v-text-field>
         </v-flex>
 
         <v-flex xs12 md1 offset-md1>
           <v-text-field label="Price"
-                        dark
                         prefix="$"
                         v-model="item.price"
                         required
@@ -37,12 +35,12 @@
 
         <v-flex xs12 md2 offset-md1>
           <v-text-field label="Quantity"
-                        dark
                         min="0"
                         v-model="item.quantity"
                         type="number"
                         required
-                        color="blue">
+                        color="blue"
+                        class="black--text">
           </v-text-field>
         </v-flex>
 
@@ -105,7 +103,8 @@ export default {
         quantiti: 0,
         price: 0,
         get subtotal() {
-          return this.quantity * this.price;
+          if (this.quantity && this.price) return this.quantity * this.price;
+          else return 0;
         }
       };
 

@@ -1,7 +1,14 @@
 <template>
   <div class="l-create-page">
-    <budget-creation v-if="budgetCreation && !editPage" slot="budget-creation" :clients="clients" :saveBudget="saveBudget"></budget-creation>
-    <client-creation :saveClient="saveClient" slot="client-creation" v-if="!budgetCreation && !editPage"></client-creation>
+    <budget-creation v-if="budgetCreation && !editPage" 
+        slot="budget-creation" 
+        :clients="clients" 
+        :saveBudget="saveBudget"
+    ></budget-creation>
+    <client-creation :saveClient="saveClient" 
+        slot="client-creation" 
+        v-if="!budgetCreation && !editPage"
+    ></client-creation>
 
     <budget-edit v-else-if="budgetEdit && editPage"
       slot="budget-creation"

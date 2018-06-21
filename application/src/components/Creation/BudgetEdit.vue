@@ -15,7 +15,7 @@
         <v-select
           label="Client"
           :items="clients"
-          v-model="budget.client_id"
+          v-model="budget.client"
           item-text="name"
           item-value="_id"
         >
@@ -167,6 +167,8 @@ export default {
           this.budget.items = parseItems(items);
         }
       }
+
+      console.log("Budget: " + JSON.stringify(this.budget));
     }
   }
 };

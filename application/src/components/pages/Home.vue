@@ -27,6 +27,8 @@
               :budgetEdit="budgetEdit"
               :editPage="editPage"
               :clients="clients"
+              :budget="budget"
+              :client="client"
               :saveBudget="saveBudget"
               :saveClient="saveClient"
               :fixClientNameAndUpdate="fixClientNameAndUpdate"
@@ -191,6 +193,7 @@ export default {
       })
         .then(({ data }) => {
           this.clients = this.dataParser(data, "name", "email", "_id", "phone");
+          console.log("Clients: " + JSON.stringify(this.clients));
         })
         .catch(error => {
           this.errorHandler(error);
@@ -225,6 +228,7 @@ export default {
         }
       })
         .then(({ data }) => {
+          console.log("Client Data: " + JSON.stringify(data));
           this.client = data;
           this.enableEdit("client");
         })
@@ -247,6 +251,8 @@ export default {
     },
     saveBudget(budget) {
       budget.user_id = budget.user_id = this.$cookie.get("user_id");
+
+      console.log("Budget Data: " + JSON.stringify(budget));
       Axios.post(`${BudgetManagerAPI}/api/v1/budget`, budget, {
         headers: {
           Authorization: Authentication.getAuthenticationHeader(this)
@@ -267,6 +273,7 @@ export default {
       this.clients.find(client => {
         if (client._id === budget.client_id) {
           budget.client = client.name;
+          budget.client_id = client._id;
         }
       });
       this.updateBudget(budget);
