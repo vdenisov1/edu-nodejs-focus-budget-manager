@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     submitSignout() {
-      Authentication.signout(this, "/login");
+      Authentication.logoutUser(this, "/login");
     }
   }
 };
